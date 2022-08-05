@@ -10,4 +10,8 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }))
 
 app.use('/posts', postRoutes)
 
+app.use('/', (req, res) => {
+    res.json('Welcome to Memories App')
+})
+
 connectdb(app)
