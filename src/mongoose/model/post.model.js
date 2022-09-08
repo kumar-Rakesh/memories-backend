@@ -1,19 +1,31 @@
 const { Schema, model } = require('mongoose')
-const User = require('./user.model')
 
 const schema = new Schema({
-    title: String,
-    message: String,
-    creator: String,
-    tags: [String],
+    title: {
+        type: String,
+        required: true
+    },
+    message: {
+        type: String,
+        required: true
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        requird: true
+    },
+    tags: {
+        type: [String],
+        required: true
+    },
     selectedFile: String,
-    likeCount: {
-        type: Number,
-        default: 0
+    likes: {
+        type: [String],
+        default: []
     },
     createdAt: {
         type: Date,
-        default: new Date()
+        default: new Date().toISOString()
     }
 })
 
